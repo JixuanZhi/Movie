@@ -1,0 +1,2 @@
+nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /opt/homebrew/etc/nginx/nginx.conf:1
+nginx: [emerg] invalid event type "epoll" in /opt/homebrew/etc/nginx/nginx.conf:7
