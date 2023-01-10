@@ -20,8 +20,8 @@ http {
   include /etc/nginx/mime.types;
   default_type application/octet-stream;
 
-  access_log /loadbalancer/access_log.log;
-  error_log /loadbalancer/error_log.log;
+  access_log /load_balancer/access_log.log;
+  error_log /load_balancer/error_log.log;
 
   # gzip settings.
   gzip on;
@@ -45,16 +45,16 @@ http {
 
     client_max_body_size 75M;
 
-    location /movies {
+    location /hello {
       proxy_set_header Host $host;
       proxy_pass http://ranking_server;
     }
 
-    location /autocomplete {
+    location /headers {
       proxy_set_header Host $host;
       proxy_pass http://ranking_server;
     }
 
-    }
+   
   }
 }
