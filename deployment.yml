@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  load-balancer:
+    build:
+      context: ${CUR_DIR}/load_balancer
+    container_name: movie_lb
+    volumes:
+      - ${CUR_DIR}/load_balancer:/load_balancer
+    ports:
+      - 5002:80
+    expose:
+      - 80
+    stdin_open: true
+    tty: true
+    command: bash init.sh ${HOST_IP} 5001
+
+  ranking:
+    build:
+      context: ${CUR_DIR}/ranking
+    container_name: movie_ranking
+    volumes:
+      - ${CUR_DIR}/ranking:/go_source
+    ports:
+      - 5001:80
+    expose:
+      - 80
+    stdin_open: true
+    tty: true
+    command: go run server.go
