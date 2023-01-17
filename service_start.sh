@@ -2,6 +2,19 @@ docker-compose -f deployment.yml down
 
 docker-compose -f deployment.yml rm -f
 
+while getopts "k" arg
+do
+   case $arg in
+     k)
+       exit 0 
+       ;;
+     ?)
+       echo "Unknow args $arg... exit..."
+       exit 1
+       ;;
+   esac
+done
+
 ENV_FILE=".env"
 rm -f $ENV_FILE
 
