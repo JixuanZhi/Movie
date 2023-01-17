@@ -34,7 +34,7 @@ services:
       context: ${CUR_DIR}/elastic_search
     container_name: movie_search
     volumes:
-      - ${CUR_DIR}/elastic_search:/elastic_search
+      - ${CUR_DIR}/elastic_search/data:/usr/share/elasticsearch/data
     ports:
       - 5003:9200
       - 5004:9300
