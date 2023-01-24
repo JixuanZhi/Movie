@@ -13,7 +13,7 @@ services:
       - 80
     stdin_open: true
     tty: true
-    command: bash init.sh ${HOST_IP} 5001
+    command: bash init.sh ${HOST_IP} 5001 5003
 
   ranking:
     build:
@@ -27,7 +27,8 @@ services:
       - 80
     stdin_open: true
     tty: true
-    command: go run server.go
+    command: go run server.go --elastic_url http://${HOST_IP}:5003
+    #command: /bin/bash
 
   elastic-search:
     build:

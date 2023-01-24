@@ -3,12 +3,11 @@
 
 # Assign configuration values to enviroment values.
 export HOST_IP=$1
-#export TFX_PORT=$2
 export RANK_PORT=$2
-#export REVERSE_INDEX_PORT=$4
+export SEARCH_PORT=$3
 
 # Produce nginx configuration from template
-/usr/bin/envsubst '$HOST_IP $RANK_PORT' < nginx.conf.template > /etc/nginx/nginx.conf
+/usr/bin/envsubst '$HOST_IP $RANK_PORT $SEARCH_PORT' < nginx.conf.template > /etc/nginx/nginx.conf
 
 # Show generated config for the sake of debugging.
 cat /etc/nginx/nginx.conf

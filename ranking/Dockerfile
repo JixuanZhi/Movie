@@ -11,3 +11,4 @@ VOLUME /go_source
 WORKDIR /go_source 
 
 CMD go run server.go
+#CMD /bin/bash

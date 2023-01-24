@@ -38,6 +38,10 @@ http {
     server $HOST_IP:$RANK_PORT;
   }
 
+  upstream search_server {
+    server $HOST_IP:$SEARCH_PORT;
+  }
+
   server {
     listen 80 default_server;
     server_name localhost, $HOST_IP;
@@ -45,16 +49,14 @@ http {
 
     client_max_body_size 75M;
 
-    location /hello {
+    location /autocomplete {
       proxy_set_header Host $host;
       proxy_pass http://ranking_server;
     }
-
-    location /headers {
+    
+    location /elasticsearch {
       proxy_set_header Host $host;
-      proxy_pass http://ranking_server;
-    }
-
-   
+      proxy_pass http://search_server;
+    } 
   }
 }
