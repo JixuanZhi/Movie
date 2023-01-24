@@ -54,7 +54,7 @@ http {
       proxy_pass http://ranking_server;
     }
     
-    location /elasticsearch {
+    location /customer {
       proxy_set_header Host $host;
       proxy_pass http://search_server;
     } 
